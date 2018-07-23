@@ -13,7 +13,7 @@ Metrics/LineLength:
 AllCops:
   Exclude:
     - 'spec/*.rb'
-    - 'lib/generators/howl/templates/*'
+    - 'lib/generators/mononoke/templates/*'
     - 'test/**/*'
 
   TargetRubyVersion: "2.5"

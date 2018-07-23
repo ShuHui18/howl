@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'fileutils'
-module Howl
+module Mononoke
   class InitGenerator < Rails::Generators::Base
     source_root File.expand_path('templates', __dir__)
     desc 'Generate totoro config file'

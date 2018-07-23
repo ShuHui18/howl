@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'howl/version'
+require 'mononoke/version'
 
-module Howl
+module Mononoke
   # Your code goes here...
 end

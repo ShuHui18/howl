@@ -1,6 +1,6 @@
-RSpec.describe Howl do
+RSpec.describe Mononoke do
   it "has a version number" do
-    expect(Howl::VERSION).not_to be nil
+    expect(Mononoke::VERSION).not_to be nil
   end
 
   it "does something useful" do
