@@ -7,7 +7,7 @@ module Mononoke
     desc 'Generate totoro config file'
 
     def copy_config_file
-      template 'uptime.rb', File.join('config/initializers', 'uptime.yml')
+      template 'uptime.rb', File.join('config/initializers', 'uptime.rb')
       template 'health_check_controller.rb', File.join('app/controllers', 'health_check_controller.rb')
       append_diagostics_routes unless File.foreach('config/routes.rb').grep(/diagnostics/).present?
     end
@@ -15,6 +15,7 @@ module Mononoke
     private
 
     def append_diagostics_routes
+      p 'Add Diagnostics routes in `configs/routes.rb`'
       tempfile = File.open('routes.tmp', 'w')
       f = File.new('config/routes.rb')
       f.each do |line|
@@ -28,13 +29,13 @@ module Mononoke
 
     def diagnostics_str
       @diagnostics_str ||= <<~FOO
-            root to: 'health_check#index'
-            scope '/diagnostics' do
-              get '/quickhealth', to: 'health_check#quick_health'
-              get '/health',      to: 'health_check#health'
-              get '/version',     to: 'health_check#version'
-              get '/uptime',      to: 'health_check#uptime'
-            end
+        root to: 'health_check#index'
+        scope '/diagnostics' do
+          get '/quickhealth', to: 'health_check#quick_health'
+          get '/health',      to: 'health_check#health'
+          get '/version',     to: 'health_check#version'
+          get '/uptime',      to: 'health_check#uptime'
+        end
       FOO
     end
   end
