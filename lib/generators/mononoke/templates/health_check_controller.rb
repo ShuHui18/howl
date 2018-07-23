@@ -36,8 +36,8 @@ class HealthCheckController < ApplicationController
 
   def uptime
     response = {
-      started_at: Application::BOOTED_AT,
-      uptime: (Time.now - Application::BOOTED_AT).to_i
+      started_at: Diagnostics::BOOTED_AT,
+      uptime: (Time.now - Diagnostics::BOOTED_AT).to_i
     }
     render json: response
   end

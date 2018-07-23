@@ -1,1 +1,3 @@
-Application::BOOTED_AT = Time.now
+module Diagnostics
+  BOOTED_AT = Time.now
+end
