@@ -8,7 +8,7 @@ module Mononoke
 
     def copy_config_file
       template 'uptime.rb', File.join('config/initializers', 'uptime.yml')
-      template 'health_check_controller.rb', File.join('app/controller', 'health_check_controller.rb')
+      template 'health_check_controller.rb', File.join('app/controllers', 'health_check_controller.rb')
       append_diagostics_routes unless File.foreach('config/routes.rb').grep(/diagnostics/).present?
     end
 
@@ -28,13 +28,13 @@ module Mononoke
 
     def diagnostics_str
       @diagnostics_str ||= <<~FOO
-        root to: 'health_check#index'
-        scope '/diagnostics' do
-          get '/quickhealth', to: 'health_check#quick_health'
-          get '/health',      to: 'health_check#health'
-          get '/version',     to: 'health_check#version'
-          get '/uptime',      to: 'health_check#uptime'
-        end
+            root to: 'health_check#index'
+            scope '/diagnostics' do
+              get '/quickhealth', to: 'health_check#quick_health'
+              get '/health',      to: 'health_check#health'
+              get '/version',     to: 'health_check#version'
+              get '/uptime',      to: 'health_check#uptime'
+            end
       FOO
     end
   end
